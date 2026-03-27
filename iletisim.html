@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | Yapısan AnkarAmbalaj</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f4f4; color: #333; }
+        nav { background: #003366; padding: 15px; text-align: center; }
+        nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; }
+        .contact-container { max-width: 900px; margin: 30px auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .contact-info { padding: 40px; text-align: center; }
+        .contact-info h1 { color: #004a99; margin-bottom: 25px; border-bottom: 3px solid #ffcc00; display: inline-block; padding-bottom: 5px; }
+        .info-row { font-size: 19px; margin: 20px 0; display: flex; align-items: center; justify-content: center; gap: 15px; line-height: 1.6; }
+        .info-row i { color: #cc0000; font-size: 22px; }
+        .map-frame { width: 100%; height: 400px; border: none; background: #eee; }
+        .map-button { display: inline-flex; align-items: center; gap: 12px; background: #4285F4; color: white; padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 18px; border-radius: 50px; margin-top: 20px; transition: 0.3s; box-shadow: 0 6px 15px rgba(66,133,244,0.3); }
+        .map-button:hover { background: #1a73e8; transform: translateY(-2px); }
+        .wa-info { color: #25d366; font-weight: bold; display: block; margin-top: 15px; font-size: 18px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">ANA SAYFA</a>
+    <a href="galeri.html">FOTO GALERİ</a>
+    <a href="iletisim.html">İLETİŞİM</a>
+</nav>
+
+<div class="contact-container">
+    <iframe 
+        class="map-frame"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1000!2d32.742264!3d39.988131!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDU5JzE3LjMiTiAzMsKwNDQnMzIuMiJF!5e0!3m2!1str!2str!4v1711285000000!5m2!1str!2str" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+
+    <div class="contact-info">
+        <h1>BİZE ULAŞIN</h1>
+        <div class="info-row">
+            <i class="fas fa-map-marker-alt"></i>
+            <span><strong>ADRES:</strong><br>Özankara Sanayi Sitesi, 1419. Cadde, No: 7<br>İvedik OSB, Yenimahalle / ANKARA</span>
+        </div>
+        <div class="info-row">
+            <i class="fas fa-phone-alt"></i>
+            <span><strong>TELEFON:</strong><br>+90 534 242 22 33</span>
+        </div>
+        <span class="wa-info"><i class="fab fa-whatsapp"></i> WhatsApp: +90 534 242 22 33</span>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=39.988131,32.742264" target="_blank" class="map-button">
+            <i class="fas fa-route"></i> BURAYA YOL TARİFİ AL
+        </a>
+    </div>
+</div>
+
+<footer style="text-align: center; opacity: 0.5; font-size: 13px; padding: 20px;">
+    © 2026 Yapısan AnkarAmbalaj - İvogsan Ankara
+</footer>
+
+</body>
+</html>
