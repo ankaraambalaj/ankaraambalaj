@@ -4,89 +4,319 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPS Strafor Çözümleri - Ankara Ambalaj</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: auto; padding: 20px; background-color: #f4f4f4; }
-        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid #e67e22; }
-        
-        h1 { color: #d35400; text-align: center; margin-bottom: 30px; }
-        h2 { color: #2c3e50; border-left: 5px solid #e67e22; padding-left: 15px; margin-top: 30px; }
-        
-        .back-button { display: inline-block; margin-bottom: 20px; color: #e67e22; text-decoration: none; font-weight: bold; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f0f0;
+        }
+
+        .top-bar {
+            background: #000;
+            color: #ffcc00;
+            text-align: center;
+            padding: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #ff4500;
+        }
+
+        .back-bar {
+            background: #fff;
+            padding: 10px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .back-button {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
         .back-button:hover { text-decoration: underline; }
 
-        /* FOTOĞRAF ALANI */
-        .foto-cerceve { text-align: center; margin: 30px 0; background: #fff; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .urun-img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid #ddd; }
-        .foto-altyazi { margin-top: 15px; color: #666; font-style: italic; font-size: 0.95em; }
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+            padding: 35px 20px 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,69,0,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(20px, 5vw, 32px);
+            font-weight: 900;
+            color: #ff4500;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .hero p {
+            font-size: 15px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-        .vurgu-kutusu { background: #fff3e0; padding: 20px; border-radius: 10px; border: 1px dashed #e67e22; margin: 20px 0; font-size: 1.1em; text-align: center; color: #d35400; }
+        /* ── GALERİ ── */
+        .galeri-wrapper {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 18px;
+            align-items: stretch;
+        }
 
-        .liste { list-style: none; padding: 0; }
-        .liste-oge { background: #f9f9f9; margin-bottom: 12px; padding: 20px; border-radius: 10px; border-left: 5px solid #34495e; transition: 0.3s; }
-        .liste-oge:hover { transform: translateX(10px); background: #f1f1f1; }
-        .liste-oge strong { color: #2c3e50; font-size: 1.1em; display: block; margin-bottom: 5px; }
+        /* SOL: büyük resim */
+        .galeri-sol {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid #e67e22;
+            display: flex;
+            flex-direction: column;
+        }
+        .galeri-sol img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .altyazi {
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+        .altyazi strong {
+            display: block;
+            color: #2c3e50;
+            font-style: normal;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
 
-        footer { margin-top: 50px; text-align: center; padding: 20px; border-top: 1px solid #eee; color: #888; font-size: 0.9em; }
-        
-        /* MOBİL AYAR */
-        @media (max-width: 600px) {
-            .container { padding: 15px; }
-            h1 { font-size: 1.5em; }
+        /* SAĞ: video + bilgi kutusu */
+        .galeri-sag {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .video-kart {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid #e67e22;
+        }
+        .video-kart video {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bilgi-kutusu {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-radius: 16px;
+            padding: 20px;
+            border: 2px dashed #e67e22;
+            font-size: 15px;
+            color: #c0392b;
+            font-weight: 600;
+            line-height: 1.7;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(230,126,34,0.15);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── ANA İÇERİK ── */
+        .container {
+            max-width: 960px;
+            margin: 0 auto 40px;
+            padding: 0 15px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #e67e22;
+            padding-left: 15px;
+            margin: 30px 0 15px;
+            font-size: 20px;
+        }
+
+        .liste { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 25px; }
+        .liste-oge {
+            background: #fff;
+            padding: 18px 20px;
+            border-radius: 12px;
+            border-left: 5px solid #34495e;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            transition: transform 0.25s, border-color 0.25s;
+        }
+        .liste-oge:hover { transform: translateX(6px); border-color: #e67e22; }
+        .liste-oge strong { color: #2c3e50; font-size: 15px; display: block; margin-bottom: 6px; }
+        .liste-oge p { font-size: 14px; color: #555; }
+
+        .kullanim-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .kullanim-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #444;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #e67e22;
+        }
+        .kullanim-item i { color: #e67e22; font-size: 16px; flex-shrink: 0; }
+
+        .cta-wrapper { text-align: center; margin: 35px 0 20px; }
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 16px 36px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 18px rgba(37,211,102,0.4);
+            transition: 0.3s;
+        }
+        .whatsapp-btn:hover { background: #1da851; transform: translateY(-2px); }
+
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            border-top: 3px solid #ff4500;
+        }
+
+        @media (max-width: 620px) {
+            .galeri-wrapper { grid-template-columns: 1fr; }
+            .liste { grid-template-columns: 1fr; }
+            .video-kart video { height: 220px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <a href="index.html" class="back-button">← Ana Sayfaya Dön</a>
-        
-        <h1>EPS (Strafor) Ambalaj ve Koruma Çözümleri</h1>
+<div class="top-bar">YAPISAN MÜHENDİSLİK — ANKARA AMBALAJ</div>
 
-        <p><strong>Ankara Ambalaj (Yapısan Mühendislik)</strong> olarak, ürünlerinizin güvenliğini tesadüfe bırakmıyoruz. CNC teknolojimiz sayesinde, kalıp maliyeti çıkarmadan ürününüze tam uyumlu koruma kalkanları üretiyoruz.</p>
+<div class="back-bar">
+    <a href="index.html" class="back-button">← Ana Sayfaya Dön</a>
+</div>
 
-        <div class="foto-cerceve">
-            <img src="koli-ici-strafor.png" alt="CNC Strafor Ambalaj Örneği" class="urun-img">
-            <p class="foto-altyazi">Uygulama Örneği: Hassas elektronik ve sanayi ürünleri için milimetrik CNC kesim.</p>
-        </div>
+<div class="hero">
+    <h1>EPS (Strafor) Ambalaj ve Koruma Çözümleri</h1>
+    <p><strong style="color:#ffcc00;">Ankara Ambalaj (Yapısan Mühendislik)</strong> olarak ürünlerinizin güvenliğini tesadüfe bırakmıyoruz. CNC teknolojimizle, kalıp maliyeti çıkarmadan ürününüze tam uyumlu koruma üretiyoruz.</p>
+</div>
 
-        <div class="vurgu-kutusu">
-            "Ürünlerinizi sarıp sarmalamak veya koli içindeki boşlukları doldurmak için en ekonomik ve pratik çözüm!"
-        </div>
+<!-- GALERİ -->
+<div class="galeri-wrapper">
 
-        <h2>Neden Bizim Çözümlerimizi Seçmelisiniz?</h2>
-        
-        <div class="liste">
-            <div class="liste-oge">
-                <strong>💰 En Ekonomik Dolgu Malzemesi</strong>
-                Özel kalıp veya pahalı CNC işçiliği gerektirmediği için maliyeti en düşük koruma yöntemidir. Bütçe dostu bir alternatiftir.
-            </div>
-            <div class="liste-oge">
-                <strong>🛡️ Çizilmelere Karşı Tam Kalkan</strong>
-                Mobilya, cam veya beyaz eşya gibi çizilmeye müsait ürünlerin arasına konularak sürtünmeyi ve yüzey hasarlarını tamamen engeller.
-            </div>
-            <div class="liste-oge">
-                <strong>📦 Koli İçi Sabitleme</strong>
-                Ürünlerin kutu içinde sallanmasını, devrilmesini önlemek için alt/üst kapak veya ara bölme olarak mükemmel uyum sağlar.
-            </div>
-            <div class="liste-oge">
-                <strong>🌊 Darbe ve Isı Yalıtımı</strong>
-                Nakliye sırasındaki sarsıntıları emer, darbeleri dışarıda tutar. Aynı zamanda ısıya duyarlı ürünler için doğal bir yalıtım sağlar.
-            </div>
-        </div>
-
-        <h2>Sık Kullanım Alanları</h2>
-        <ul style="padding-left: 20px; color: #555;">
-            <li>Hassas Mobilya Parçaları ve Panel Koruması</li>
-            <li>Elektronik Cihaz ve Beyaz Eşya Destekleri</li>
-            <li>Cam, Porselen ve Seramik Ürünlerin Paketlenmesi</li>
-            <li>Otomotiv ve Yedek Parça Ambalajı</li>
-        </ul>
-
-        <footer>
-            © 2026 Ankara Ambalaj - Yapısan Mühendislik / Ankara<br>
-            Tüm Hakları Saklıdır.
+    <!-- SOL: Büyük resim -->
+    <div class="galeri-sol">
+        <img src="image_20.png" alt="CNC Strafor Ambalaj Detayı">
+        <div class="altyazi">
+            <strong>Milimetrik CNC Kesim</strong>
+            Ürününüze özel, hiç boşluk bırakmayan yuva.
         </div>
     </div>
+
+    <!-- SAĞ: Video üstte + bilgi kutusu altta -->
+    <div class="galeri-sag">
+        <div class="video-kart">
+            <video autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="kargo.mp4" type="video/mp4">
+            </video>
+            <div class="altyazi">
+                <strong>Güvenli Teslimat</strong>
+                Kargoda tam koruma — sarsıntı yok, hasar yok.
+            </div>
+        </div>
+
+        <div class="bilgi-kutusu">
+            Ürünlerinizi sarıp sarmalamak veya koli içindeki boşlukları doldurmak için en ekonomik ve pratik çözüm!
+        </div>
+    </div>
+
+</div>
+
+<!-- İÇERİK -->
+<div class="container">
+
+    <h2>Neden Bizim Çözümlerimizi Seçmelisiniz?</h2>
+    <div class="liste">
+        <div class="liste-oge">
+            <strong>💰 En Ekonomik Dolgu Malzemesi</strong>
+            <p>Özel kalıp veya pahalı işçilik gerektirmez. Bütçe dostu, hızlı ve pratik koruma.</p>
+        </div>
+        <div class="liste-oge">
+            <strong>🛡️ Çizilmelere Karşı Tam Kalkan</strong>
+            <p>Mobilya, cam veya beyaz eşya gibi ürünlerde sürtünmeyi ve yüzey hasarını tamamen engeller.</p>
+        </div>
+        <div class="liste-oge">
+            <strong>📦 Koli İçi Sabitleme</strong>
+            <p>Ürünlerin kutu içinde sallanmasını önlemek için alt/üst kapak veya ara bölme olarak kullanılır.</p>
+        </div>
+        <div class="liste-oge">
+            <strong>🌊 Darbe ve Isı Yalıtımı</strong>
+            <p>Nakliye sarsıntılarını emer, darbeleri dışarıda tutar. Isıya duyarlı ürünler için doğal yalıtım.</p>
+        </div>
+    </div>
+
+    <h2>Sık Kullanım Alanları</h2>
+    <div class="kullanim-grid">
+        <div class="kullanim-item"><i class="fas fa-couch"></i> Hassas Mobilya ve Panel Koruması</div>
+        <div class="kullanim-item"><i class="fas fa-tv"></i> Elektronik Cihaz ve Beyaz Eşya</div>
+        <div class="kullanim-item"><i class="fas fa-wine-glass"></i> Cam, Porselen ve Seramik</div>
+        <div class="kullanim-item"><i class="fas fa-car"></i> Otomotiv ve Yedek Parça</div>
+    </div>
+
+    <div class="cta-wrapper">
+        <a href="https://wa.me/905342422233" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp ile Teklif Al
+        </a>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Ankara Ambalaj — Yapısan Mühendislik / Ankara &nbsp;|&nbsp; Tüm Hakları Saklıdır.
+</footer>
 
 </body>
 </html>
