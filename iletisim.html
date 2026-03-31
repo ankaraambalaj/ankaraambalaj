@@ -17,17 +17,16 @@
         .map-frame { width: 100%; height: 400px; border: none; background: #eee; }
         .map-button { display: inline-flex; align-items: center; gap: 12px; background: #4285F4; color: white; padding: 18px 35px; text-decoration: none; font-weight: bold; font-size: 18px; border-radius: 50px; margin-top: 20px; transition: 0.3s; box-shadow: 0 6px 15px rgba(66,133,244,0.3); }
         .map-button:hover { background: #1a73e8; transform: translateY(-2px); }
-        .wa-info { color: #25d366; font-weight: bold; display: block; margin-top: 15px; font-size: 18px; }
+        .wa-info { color: #25d366; font-weight: bold; display: block; margin-top: 15px; font-size: 18px; text-decoration: none; }
+        .wa-info:hover { color: #1da851; }
     </style>
 </head>
 <body>
-
 <nav>
     <a href="index.html">ANA SAYFA</a>
     <a href="galeri.html">FOTO GALERİ</a>
     <a href="iletisim.html">İLETİŞİM</a>
 </nav>
-
 <div class="contact-container">
     <iframe 
         class="map-frame"
@@ -35,7 +34,6 @@
         allowfullscreen="" 
         loading="lazy">
     </iframe>
-
     <div class="contact-info">
         <h1>BİZE ULAŞIN</h1>
         <div class="info-row">
@@ -46,16 +44,14 @@
             <i class="fas fa-phone-alt"></i>
             <span><strong>TELEFON:</strong><br>+90 534 242 22 33</span>
         </div>
-        <span class="wa-info"><i class="fab fa-whatsapp"></i> WhatsApp: +90 534 242 22 33</span>
+        <a href="https://wa.me/905342422233?text=Merhaba%2C%20EPS%20ambalaj%20konusunda%20bilgi%20almak%20istiyorum.%20Bana%20yard%C4%B1mc%C4%B1%20olabilir%20misiniz%3F" class="wa-info" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: +90 534 242 22 33</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=39.988131,32.742264" target="_blank" class="map-button">
             <i class="fas fa-route"></i> BURAYA YOL TARİFİ AL
         </a>
     </div>
 </div>
-
 <footer style="text-align: center; opacity: 0.5; font-size: 13px; padding: 20px;">
     © 2026 Yapısan AnkarAmbalaj - İvogsan Ankara
 </footer>
-
 </body>
 </html>
