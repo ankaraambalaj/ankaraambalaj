@@ -3,6 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS Strafor Çözümleri - Ankara Ambalaj</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f0f0;
+        }
+
+        /* ── KÜÇÜK LOGO ── */
+        .logo-container {
+            background: #000;
+            padding: 6px 20px 12px;
+            text-align: center;
+            border-bottom: 3px solid #ff4500;
+        }
+
+        .logo-text {
+            font-size: 41px;
+            font-weight: 900;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .sol-gel { animation: soldanCarp 5s infinite ease-in-out; display: inline-block; padding-bottom: 9px; }
+        .sag-gel { animation: sagdanCarp 5s infinite ease-in-out; display: inline-block; padding-bottom: 1px; margin-left: -4px; }
+
+        .cift-a-kutusu { position: relative; width: 64px; height: 68px; display: inline-flex; align-items: flex-end; justify-content: flex-start; }
+        .a-harfi { position: absolute; font-size: 56px; font-weight: 900; bottom: 0; }
+        .a1 { left: 0; z-index: 2; animation: renkliParlayanA 5s infinite ease-in-out; }
+        .a2 { left: 15px; bottom: -7px; z-index: 1; animation: renkliArkaA 5s infinite ease-in-out; }
+
+        @keyframes soldanCarp {
+            0%, 10% { transform: translateX(-200px); opacity: 0; }
+            30%, 80% { transform: translateX(0); opacity: 1; }
+            90%, 100% { transform: translateX(-200px); opacity: 0; }
+        }
+        @keyframes sagdanCarp {
+            0%, 10% { transform: translateX(200px); opacity: 0; }
+            30%, 80% { transform: translateX(-11px); opacity: 1; }
+            90%, 100% { transform: translateX(200px); opacity: 0; }
+        }
+        @keyframes renkliParlayanA {
+            0%, 20% { color: #ffcc00; opacity: 0; transform: scale(0.9); }
+            40%, 80% { color: #ffcc00; opacity: 1; text-shadow: 0 0 15px #ff4500; transform: scale(1); }
+            90%, 100% { opacity: 0; }
+        }
+        @keyframes renkliArkaA {
+            0%, 25% { color: #ff4500; opacity: 0; }
+            45%, 85% { color: #ff4500; opacity: 1; text-shadow: 0 0 10px #ff0000; }
+            95%, 100% { opacity: 0; }
+        }
+
+        /* ── NAV MENÜ ── */
+        nav {
+            background: #003366;
+            padding: 13px 20px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 18px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: #ffcc00; }
+
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+            color: white;
+            text-align: center;
+            padding: 35px 20px 25px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,69,0,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: clamp(20px, 5vw, 32px);
+            font-weight: 900;
+            color: #ff4500;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .hero p {
+            font-size: 15px;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ── GALERİ ── */
+        .galeri-wrapper {
+            max-width: 960px;
+            margin: 30px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        .galeri-sol {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid #e67e22;
+            display: flex;
+            flex-direction: column;
+        }
+        .galeri-sol img { width: 100%; height: auto; display: block; }
+        .altyazi {
+            padding: 10px 15px;
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+        .altyazi strong {
+            display: block;
+            color: #2c3e50;
+            font-style: normal;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .galeri-sag { display: flex; flex-direction: column; gap: 14px; }
+
+        .video-kart {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-top: 4px solid #e67e22;
+        }
+        .video-kart video { width: 100%; height: 190px; object-fit: cover; display: block; }
+
+        .bilgi-kutusu {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border-radius: 16px;
+            padding: 20px;
+            border: 2px dashed #e67e22;
+            font-size: 15px;
+            color: #c0392b;
+            font-weight: 600;
+            line-height: 1.7;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(230,126,34,0.15);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ── ANA İÇERİK ── */
+        .container { max-width: 960px; margin: 0 auto 40px; padding: 0 15px; }
+
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #e67e22;
+            padding-left: 15px;
+            margin: 30px 0 15px;
+            font-size: 20px;
+        }
+
+        .liste { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 25px; }
+        .liste-oge {
+            background: #fff;
+            padding: 18px 20px;
+            border-radius: 12px;
+            border-left: 5px solid #34495e;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            transition: transform 0.25s, border-color 0.25s;
+        }
+        .liste-oge:hover { transform: translateX(6px); border-color: #e67e22; }
+        .liste-oge strong { color: #2c3e50; font-size: 15px; display: block; margin-bottom: 6px; }
+        .liste-oge p { font-size: 14px; color: #555; }
+
+        .kullanim-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .kullanim-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 14px;
+            color: #444;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid #e67e22;
+        }
+        .kullanim-item i { color: #e67e22; font-size: 16px; flex-shrink: 0; }
+
+        .cta-wrapper { text-align: center; margin: 35px 0 20px; }
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 16px 36px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 18px rgba(37,211,102,0.4);
+            transition: 0.3s;
+        }
+        .whatsapp-btn:hover { background: #1da851; transform: translateY(-2px); }
+
+        footer {
+            background: #111;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            border-top: 3px solid #ff4500;
+        }
+
+        @media (max-width: 620px) {
+            .galeri-wrapper { grid-template-columns: 1fr; }
+            .liste { grid-template-columns: 1fr; }
+            .video-kart video { height: 220px; }
+            nav a { margin: 0 10px; font-size: 13px; }
+            .logo-text { font-size: 30px; }
+            .a-harfi { font-size: 42px; }
+            .cift-a-kutusu { width: 48px; height: 52px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- KÜÇÜK ANİMASYONLU LOGO -->
+<div class="logo-container">
+    <div class="logo-text">
+        <span class="sol-gel">Ankar</span>
+        <div class="cift-a-kutusu">
+            <span class="a-harfi a1">A</span>
+            <span class="a-harfi a2">A</span>
+        </div>
+        <span class="sag-gel">mbalaj</span>
+    </div>
+</div>
+
+<nav>
+    <a href="index.html">ANA SAYFA</a>
+    <a href="galeri.html">FOTO GALERİ</a>
+    <a href="iletisim.html">İLETİŞİM</a>
+</nav>
+
+<div class="hero">
+    <h1>EPS (Strafor) Ambalaj ve Koruma Çözümleri</h1>
+    <p><strong style="color:#ffcc00;">Ankara Ambalaj (Yapısan Mühendislik)</strong> olarak ürünlerinizin güvenliğini tesadüfe bırakmıyoruz. CNC teknolojimizle, kalıp maliyeti çıkarmadan ürününüze tam uyumlu koruma üretiyoruz.</p>
+</div>
+
+<!-- GALERİ -->
+<div class="galeri-wrapper">
+
+    <div class="galeri-sol">
+        <img src="image_20.png" alt="CNC Strafor Ambalaj Detayı">
+        <div class="altyazi">
+            <strong>Milimetrik CNC Kesim</strong>
+            Ürününüze özel, hiç boşluk bırakmayan yuva.
+        </div>
+    </div>
+
+    <div class="galeri-sag">
+        <div class="video-kart">
+            <video autoplay muted loop playsinline webkit-playsinline preload="auto">
+                <source src="kargo.mp4" type="video/mp4">
+            </video>
+            <div class="altyazi">
+                <strong>Güvenli Teslimat</strong>
+                Kargoda tam koruma — sarsıntı yok, hasar yok.
+            </div>
+        </div>
+
+        <div class="bilgi-kutusu">
+            Ürünlerinizi sarıp sarmalamak veya koli içindeki boşlukları doldurmak için en ekonomik ve pratik çözüm!
+        </div>
+    </div>
+
+</div>
+
+<!-- İÇERİK -->
+<div class="container">
+
+    <h2>Neden Bizim Çözümlerimizi Seçmelisiniz?</h2>
+    <div class="liste">
+        <div class="liste-oge">
+            <strong>💰 En Ekonomik Dolgu Malzemesi</strong>
+            <p>Özel kalıp veya pahalı işçilik gerektirmez. Bütçe dostu, hızlı ve pratik koruma.</p>
+        </div>
+        <div class="liste-oge">
+            <strong>🛡️ Çizilmelere Karşı Tam Kalkan</strong>
+            <p>Mobilya, cam veya beyaz eşya gibi ürünlerde sürtünmeyi ve yüzey hasarını tamamen engeller.</p>
+        </div>
+        <div class="liste-oge">
+            <strong>📦 Koli İçi Sabitleme</strong>
+            <p>Ürünlerin kutu içinde sallanmasını önlemek için alt/üst kapak veya ara bölme olarak kullanılır.</p>
+        </div>
+        <div class="liste-oge">
+            <strong>🌊 Darbe ve Isı Yalıtımı</strong>
+            <p>Nakliye sarsıntılarını emer, darbeleri dışarıda tutar. Isıya duyarlı ürünler için doğal yalıtım.</p>
+        </div>
+    </div>
+
+    <h2>Sık Kullanım Alanları</h2>
+    <div class="kullanim-grid">
+        <div class="kullanim-item"><i class="fas fa-couch"></i> Hassas Mobilya ve Panel Koruması</div>
+        <div class="kullanim-item"><i class="fas fa-tv"></i> Elektronik Cihaz ve Beyaz Eşya</div>
+        <div class="kullanim-item"><i class="fas fa-wine-glass"></i> Cam, Porselen ve Seramik</div>
+        <div class="kullanim-item"><i class="fas fa-car"></i> Otomotiv ve Yedek Parça</div>
+    </div>
+
+    <div class="cta-wrapper">
+        <a href="https://wa.me/905342422233?text=Merhaba%2C%20EPS%20ambalaj%20konusunda%20bilgi%20almak%20istiyorum.%20Bana%20yard%C4%B1mc%C4%B1%20olabilir%20misiniz%3F" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> WhatsApp ile Teklif Al
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yapısan Ambalaj | Galeri</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f0f2f5; text-align: center; }
@@ -15,16 +370,17 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html">ANA SAYFA</a>
-        <a href="galeri.html">FOTO GALERİ</a>
-        <a href="iletisim.html">İLETİŞİM</a>
-    </nav>
+    
     <h1 style="color:#004a99; margin-top:30px;">Üretim Galerimiz</h1>
     <div class="gallery-container">
         <div class="photo-card"><img src="cnc-makine.jpg"><p>Hassas CNC Hattımız</p></div>
         <div class="photo-card"><img src="motor-ambalaj.jpg"><p>Motor Koruma Blokları</p></div>
         <div class="photo-card"><img src="ozel-kesim.jpg"><p>Özel Tasarım Çözümler</p></div>
     </div>
+	
+<footer>
+    © 2026 Ankara Ambalaj — Yapısan Mühendislik / Ankara &nbsp;|&nbsp; Tüm Hakları Saklıdır.
+</footer>
+
 </body>
 </html>
